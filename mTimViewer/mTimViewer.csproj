@@ -63,14 +63,6 @@
       <HintPath>..\packages\HelixToolkit.Wpf.2015.1.593\lib\net45\HelixToolkit.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Mvvm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mvvm.0.8.16117892\lib\Mvvm.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmFS, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mvvm.0.8.16117892\lib\MvvmFS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\protobuf-net.dll</HintPath>
