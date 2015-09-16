@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using mTIM.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime;
@@ -42,6 +43,11 @@ namespace mTimViewer
                     r = ProtoBuf.Serializer.Deserialize<Result>(fs);
 
                 _model.Children.Clear();
+
+                var nLines = r.Elements.SelectMany(x => x.Geometries).Select(g => r.Geometries[g.GeometryIndex]).Select(x => ((TriangulatedGeometryData)x).Lines.Length).Sum();
+                var nTriangles = r.Elements.SelectMany(x => x.Geometries).Select(g => r.Geometries[g.GeometryIndex]).Select(x => ((TriangulatedGeometryData)x).Triangles.Length).Sum();
+
+                Debug.WriteLine($"Model contains {nLines} Lines and {nTriangles} Triangles");
 
                 var material = MaterialHelper.CreateMaterial(Colors.Red, 1);
 
