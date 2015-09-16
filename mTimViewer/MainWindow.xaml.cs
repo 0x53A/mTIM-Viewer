@@ -63,21 +63,28 @@ namespace mTimViewer
                             }
                             var mesh = builder.ToMesh(true);
                             var geoModel = new GeometryModel3D { Geometry = mesh, Material = material };
-                            
+
+                            Transform3D matrix = null;
                             if (geoRef.Transform != null)
-                                geoModel.Transform = new MatrixTransform3D(MatrixHelper.FromArray(geoRef.Transform.Matrix));
+                            {
+                                matrix = new MatrixTransform3D(MatrixHelper.FromArray(geoRef.Transform.Matrix));
+                                geoModel.Transform = matrix;
+                            }
                             var modelVisual = new ModelVisual3D { Content = geoModel };
 
-                            //foreach (var l in triangulated.Lines)
-                            //{
-                            //    var a = r.PointsAndVectors[l.A].ToWpfPoint();
-                            //    var b = r.PointsAndVectors[l.B].ToWpfPoint();
-                            //    var lineGeo = new LinesVisual3D { Color = Colors.Green, Points = new[] { a, b } };
-                            //    if (matrix != null)
-                            //        lineGeo.Transform = new MatrixTransform3D(matrix.Value);
+                            if (_lines.IsChecked == true)
+                            {
+                                foreach (var l in triangulated.Lines)
+                                {
+                                    var a = r.PointsAndVectors[l.A].ToWpfPoint();
+                                    var b = r.PointsAndVectors[l.B].ToWpfPoint();
+                                    var lineGeo = new LinesVisual3D { Color = Colors.Green, Points = new[] { a, b } };
+                                    if (matrix != null)
+                                        lineGeo.Transform = matrix;
 
-                            //    modelVisual.Children.Add(lineGeo);
-                            //}
+                                    modelVisual.Children.Add(lineGeo);
+                                }
+                            }
 
                             _model.Children.Add(modelVisual);
                         }

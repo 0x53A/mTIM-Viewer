@@ -13,6 +13,9 @@
             <ht:SunLight/>
             <ModelVisual3D x:Name="_model"/>
         </ht:HelixViewport3D>
-        <Button Content="Load" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" />
+        <StackPanel>
+            <CheckBox Content="Also draw Lines" Name="_lines" />
+            <Button Content="Load" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" />
+        </StackPanel>
     </Grid>
 </Window>
